@@ -1,0 +1,30 @@
+{
+    "name": "xelax90/zf-user-notification",
+    "description": "Event-Driven User notification system",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "Aleksandr",
+            "email": "schurix@gmx.de"
+        }
+    ],
+	"extra" : {
+		"zf" : {
+			"module" : "XelaxUserNotification"
+		}
+	},
+    "autoload": {
+        "psr-4": {
+            "XelaxUserNotification\\": "src/"
+        }
+    },
+    "require": {
+		"xelax90/zf-user-entity" : "^1.0",
+		"zendframework/zend-mail" : "^2.7",
+		"zendframework/zend-eventmanager" : "^3.1"
+	},
+	"require-dev" : {
+	},
+	"suggest" : {
+	}
+}
