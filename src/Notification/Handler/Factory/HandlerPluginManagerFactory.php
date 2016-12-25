@@ -1,8 +1,8 @@
 <?php
-namespace XelaxUserNotification\Notification\Factory;
+namespace XelaxUserNotification\Notification\Handler\Factory;
 
 use Zend\Mvc\Service\AbstractPluginManagerFactory;
-use XelaxUserNotification\Notification\NotificationPluginManager;
+use XelaxUserNotification\Notification\Handler\HandlerPluginManager;
 use Interop\Container\ContainerInterface;
 use XelaxUserNotification\Module;
 
@@ -11,10 +11,9 @@ use XelaxUserNotification\Module;
  *
  * @author schurix
  */
-class NotificationPluginManagerFactory extends AbstractPluginManagerFactory{
-	
-	const PLUGIN_MANAGER_CLASS = NotificationPluginManager::class;
-	const CONFIG_KEY = 'notification_plugin_manager';
+class HandlerPluginManagerFactory extends AbstractPluginManagerFactory{
+	const PLUGIN_MANAGER_CLASS = HandlerPluginManager::class;
+	const CONFIG_KEY = 'handler_plugin_manager';
 	
 	public function __invoke(ContainerInterface $container, $name, array $options = null) {
 		if(!$options){

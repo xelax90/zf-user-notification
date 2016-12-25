@@ -8,6 +8,8 @@ use Zend\EventManager\EventInterface;
 
 class Module implements ConfigProviderInterface, ServiceProviderInterface, BootstrapListenerInterface
 {
+	const CONFIG_KEY = 'xelax_user_notification';
+	
 	public function onBootstrap(EventInterface $e) {
 		if(!$e instanceof MvcEvent){
 			return;
@@ -17,9 +19,9 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface, Boots
 		$eventManager = $app->getEventManager();
 		$container = $app->getServiceManager();
 		
-		/* @var $userListener Listener\UserListener */
-		$userListener = $container->get(Listener\UserListener::class);
-		$userListener->attach($eventManager);
+		/* @var $notificationListener Listener\NotificationListener */
+		$notificationListener = $container->get(Listener\NotificationListener::class);
+		$notificationListener->attach($eventManager);
 	}
 
 	public function getConfig() {
@@ -29,7 +31,10 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface, Boots
 	public function getServiceConfig() {
 		return [
 			'factories' => [
-				Listener\UserListener::class => Listener\Factory\UserListenerFactory::class,
+				Listener\NotificationListener::class => Listener\Factory\NotificationListenerFactory::class,
+				Notification\NotificationPluginManager::class => Notification\Factory\NotificationPluginManagerFactory::class,
+				Notification\Handler\HandlerPluginManager::class => Notification\Handler\Factory\HandlerPluginManagerFactory::class,
+				Options\NotificationOptions::class => Options\Factory\NotificationOptionsFactory::class
 			],
 			'delegators' => [
 			],

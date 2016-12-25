@@ -1,0 +1,14 @@
+<?php 
+	/* @var $notification XelaxUserNotification\Notification\NotificationInterface */
+	$notification = $this->notification; 
+	/* @var $receiver \XelaxUserEntity\Entity\User */
+	$receiver = $notification->getTo();
+?>Hallo <?= $receiver->getDisplayName() ?>,
+
+Du hast eine Nachricht vom Typ '<?= $notification->getType() ?>'<?php if($notification instanceof XelaxUserNotification\Notification\UserNotification ) echo ' von '.$notification->getFrom()->getDisplayName(); ?> erhalten:
+Klasse: <?= get_class($notification) ?>
+<?php foreach($notification->getParameters() as $key => $param) : ?> 
+	<?= $key ?>: <?= $param ?> 
+<?php endforeach; ?>
+
+- Dein System

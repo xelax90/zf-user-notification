@@ -78,6 +78,6 @@ class Notification extends EventProvider{
 	}
 	
 	public function sendNotification($eventName, NotificationInterface $notification){
-		$this->getEventManager()->trigger($eventName, $notification);
+		$this->getEventManager()->trigger($eventName, $this, ['notification' => $notification]);
 	}
 }

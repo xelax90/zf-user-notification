@@ -1,0 +1,5 @@
+<?php 
+	/* @var $notification XelaxUserNotification\Notification\NotificationInterface */
+	$notification = $this->notification; 
+?>
+Notification of Type '<?= $notification->getType() ?>'<?php if($notification instanceof XelaxUserNotification\Notification\UserNotification ) echo ' from '.$notification->getFrom()->getDisplayName(); ?>
