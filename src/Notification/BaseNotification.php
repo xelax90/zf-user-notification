@@ -49,7 +49,7 @@ class BaseNotification implements NotificationInterface{
 		return $this;
 	}
 
-	public function setParameters($parameters) {
+	public function setParameters(array $parameters) {
 		$this->parameters = $parameters;
 		return $this;
 	}

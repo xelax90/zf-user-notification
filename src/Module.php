@@ -4,6 +4,7 @@ namespace XelaxUserNotification;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
+use Zend\Mvc\MvcEvent;
 use Zend\EventManager\EventInterface;
 
 class Module implements ConfigProviderInterface, ServiceProviderInterface, BootstrapListenerInterface
@@ -34,7 +35,8 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface, Boots
 				Listener\NotificationListener::class => Listener\Factory\NotificationListenerFactory::class,
 				Notification\NotificationPluginManager::class => Notification\Factory\NotificationPluginManagerFactory::class,
 				Notification\Handler\HandlerPluginManager::class => Notification\Handler\Factory\HandlerPluginManagerFactory::class,
-				Options\NotificationOptions::class => Options\Factory\NotificationOptionsFactory::class
+				Options\NotificationOptions::class => Options\Factory\NotificationOptionsFactory::class,
+				Service\Notification::class => Service\Factory\NotificationFactory::class
 			],
 			'delegators' => [
 			],

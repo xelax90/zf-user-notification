@@ -14,7 +14,7 @@ use XelaxUserNotification\Notification\NotificationPluginManager;
  *
  * @author schurix
  */
-class Notification extends EventProvider{
+class Notification{
 	
 	const EVENT_SYSTEM_NOTIFICATION = 'notification_system';
 	const EVENT_USER_NOTIFICATION = 'notification_user';

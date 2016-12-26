@@ -7,8 +7,10 @@
 
 Du hast eine Nachricht vom Typ '<?= $notification->getType() ?>'<?php if($notification instanceof XelaxUserNotification\Notification\UserNotification ) echo ' von '.$notification->getFrom()->getDisplayName(); ?> erhalten:
 Klasse: <?= get_class($notification) ?>
-<?php foreach($notification->getParameters() as $key => $param) : ?> 
-	<?= $key ?>: <?= $param ?> 
-<?php endforeach; ?>
+<?php 
+foreach($notification->getParameters() as $key => $param) {
+	echo $key.': '. $param.PHP_EOL ;
+}
+?>
 
 - Dein System

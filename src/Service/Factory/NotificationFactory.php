@@ -4,7 +4,7 @@ namespace XelaxUserNotification\Service\Factory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Zend\EventManager\EventManager;
+use XelaxUserNotification\Notification\NotificationPluginManager;
 use XelaxUserNotification\Service\Notification;
 
 /**
@@ -14,7 +14,8 @@ use XelaxUserNotification\Service\Notification;
  */
 class NotificationFactory implements FactoryInterface{
 	public function __invoke(ContainerInterface $container, $requestedName, array $options = null) {
-		$events = $container->get(EventManager::class);
-		return new Notification($events);
+		$events = $container->get('EventManager');
+		$pluginManager = $container->get(NotificationPluginManager::class);
+		return new Notification($events, $pluginManager);
 	}
 }

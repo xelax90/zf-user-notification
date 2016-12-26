@@ -1,11 +1,4 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace XelaxUserNotification\Listener;
 
 use Zend\EventManager\AbstractListenerAggregate;
@@ -50,11 +43,6 @@ class NotificationListener extends AbstractListenerAggregate {
 		return $this;
 	}
  
-	public function attach(EventManagerInterface $events, $priority = 1) {
-		$sharedManager = $events->getSharedManager();
-		$this->listeners[] = $sharedManager->attach(NotificationService::class,   '*',          [$this, 'handleNotification'],     $priority);
-	}
-	
 	/**
 	 * @param Event $e
 	 */
@@ -77,6 +65,11 @@ class NotificationListener extends AbstractListenerAggregate {
 			$handler = $pm->get($handlerName);
 			$handler->handle($notification);
 		}
+	}
+
+	public function attach(EventManagerInterface $events, $priority = 1) {
+		$sharedManager = $events->getSharedManager();
+		$this->listeners[] = $sharedManager->attach(NotificationService::class,   '*',          [$this, 'handleNotification'],     $priority);
 	}
 
 }

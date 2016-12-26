@@ -22,6 +22,6 @@ class HandlerPluginManagerFactory extends AbstractPluginManagerFactory{
 				$options = $config[Module::CONFIG_KEY][self::CONFIG_KEY];
 			}
 		}
-		parent::__invoke($container, $name, $options);
+		return parent::__invoke($container, $name, $options);
 	}
 }
