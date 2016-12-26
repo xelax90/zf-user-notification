@@ -26,5 +26,6 @@
 	"require-dev" : {
 	},
 	"suggest" : {
+		"xelax90/zf-mail-config" : "Convenient configuration for zend-mail transport"
 	}
 }
