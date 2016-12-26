@@ -50,7 +50,7 @@ class Notification{
 		return $this;
 	}
 
-	public function sendSystemNotification($type, User $reciever, $parameters, $notificationClass = null){
+	public function sendSystemNotification($type, User $receiver, $parameters, $notificationClass = null){
 		if($notificationClass === null){
 			$notificationClass = SystemNotification::class;
 		}
@@ -58,12 +58,12 @@ class Notification{
 		$notification = $this->getPluginManager()->get($notificationClass);
 		$notification
 				->setType($type)
-				->setTo($reciever)
+				->setTo($receiver)
 				->setParameters($parameters);
 		$this->sendNotification(self::EVENT_SYSTEM_NOTIFICATION, $notification);
 	}
 	
-	public function sendUserNotification($type, User $sender, User $reciever, $parameters, $notificationClass = null){
+	public function sendUserNotification($type, User $sender, User $receiver, $parameters, $notificationClass = null){
 		if($notificationClass === null){
 			$notificationClass = UserNotification::class;
 		}
@@ -72,7 +72,7 @@ class Notification{
 		$notification
 				->setType($type)
 				->setFrom($sender)
-				->setTo($reciever)
+				->setTo($receiver)
 				->setParameters($parameters);
 		$this->sendNotification(self::EVENT_USER_NOTIFICATION, $notification);
 	}

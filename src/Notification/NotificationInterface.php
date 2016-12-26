@@ -16,7 +16,7 @@ interface NotificationInterface {
 	public function getType();
 	
 	/**
-	 * Return the reciever
+	 * Return the receiver
 	 * @return User
 	 */
 	public function getTo();

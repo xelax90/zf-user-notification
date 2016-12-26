@@ -51,3 +51,17 @@ two default events, namely `Notification::EVENT_SYSTEM_NOTIFICATION` and
 `Notification::EVENT_USER_NOTIFICATION` for the two different notification types.
 There are some default notification handlers that you should maybe look at before
 implementing additional logic.
+
+### Render And Mail Handler
+
+The `RenderAndMailHandler` uses a templte engine to render a notification and
+then sends it to the receiver using a mail transport. By default it uses the
+`Zend\View\Renderer\PhpRenderer` template engine and the 
+`Zend\Mail\Transport\TransportInterface` service as transport. The transport
+service can be registered using the `xelax90/zf-mail-config` module.
+
+You can configure the templates within your application or module config. There
+is some documentation provided in the global configuration file. The configured
+e-mail templates will be passed through the `MvcTranslator` to obtain localized
+template names which are then passed to the template engine (see 
+`language/en_US.php` and `language/de_DE.php`).
